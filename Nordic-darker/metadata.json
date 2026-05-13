@@ -1,0 +1,17 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "eliver.lara@gmail.com",
+                "Name": "Eliver Lara"
+            }
+        ],
+        "Description": "Nordic Darker - A dark theme using the Nord color palette",
+        "Id": "Nordic-darker",
+        "License": "GPL-3.0",
+        "Name": "Nordic Darker",
+        "Version": "2.2.0",
+        "Website": "https://github.com/EliverLara/Nordic"
+    },
+    "KPackageStructure": "Plasma/LookAndFeel"
+}
