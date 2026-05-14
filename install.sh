@@ -178,6 +178,18 @@ if [ -f "$DOTFILES_DIR/nvim/init.lua" ]; then
 fi
 
 # ------------------------------------------------------------------------------
+# 7.5 PLASMA PANELS - Paneles y widgets
+# ------------------------------------------------------------------------------
+log "Restaurando configuración de paneles y widgets..."
+if [ -d "$DOTFILES_DIR/plasma/panels" ]; then
+  cp "$DOTFILES_DIR/plasma/panels/plasma-org.kde.plasma.desktop-appletsrc" ~/.config/
+  cp "$DOTFILES_DIR/plasma/panels/plasmashellrc" ~/.config/
+  success "Paneles y widgets restaurados"
+else
+  warning "No se encontró configuración de paneles en dotfiles"
+fi
+
+# ------------------------------------------------------------------------------
 # 8. WALLPAPER
 # ------------------------------------------------------------------------------
 log "Instalando wallpaper Nord..."
@@ -195,6 +207,19 @@ if [ -d "/usr/share/icons/Papirus-Dark" ]; then
   success "Papirus-Dark ya está instalado"
 else
   warning "Instala papirus-icon-theme manualmente si no aparece"
+fi
+
+# ------------------------------------------------------------------------------
+# REINICIO DE PLASMA
+# ------------------------------------------------------------------------------
+log "Reiniciando Plasma para aplicar todos los cambios..."
+if command -v plasmashell &> /dev/null; then
+  kquitapp6 plasmashell > /dev/null 2>&1
+  sleep 2
+  kstart6 plasmashell > /dev/null 2>&1 &
+  success "Plasma reiniciado"
+else
+  warning "No se pudo reiniciar Plasma automáticamente, hazlo manualmente"
 fi
 
 # ------------------------------------------------------------------------------
